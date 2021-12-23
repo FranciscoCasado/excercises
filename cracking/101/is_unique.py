@@ -3,4 +3,10 @@ Implement an algorithm to determine if a string has all unique characters. What 
 """
 
 def is_unique(str) -> bool :
+    mem = []
+    for char in str:
+        if char in mem:
+            return False
+        mem.append(char)
+
     return True
