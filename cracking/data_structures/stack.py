@@ -2,19 +2,24 @@ from linked_list import LinkedList, Node
 
 class Stack:
     def __init__(self):
-        self.stack = LinkedList()
+        self.list = LinkedList()
 
     @property
     def isEmpty(self):
-        return self.stack.is_empty
+        return self.list.is_empty
 
     def push(self, data):
-        self.stack.insert_at_end(Node(data))
+        self.list.insert_at_end(data)
     
     def pop(self):
-        return self.stack.remove_node(self.stack.last)
+        if self.isEmpty:
+            raise EmptyStackException()
+        return self.list.remove_node(self.list.last)
 
     def peek(self):
-        return self.stack.last.data
+        if self.isEmpty:
+            raise EmptyStackException()
+        return self.list.last.data
 
-    
+class EmptyStackException(Exception):
+    pass

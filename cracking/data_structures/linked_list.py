@@ -40,12 +40,16 @@ class LinkedList:
         self.insert_node_prev(self._tail, new_node)
 
     def insert_node_next(self, ref_node, new_node):
+        if type(new_node) != Node:
+            new_node = Node(new_node)
         new_node.next = ref_node.next
         new_node.prev = ref_node
         ref_node.next.prev = new_node
         ref_node.next = new_node
 
     def insert_node_prev(self, ref_node, new_node):
+        if type(new_node) != Node:
+            new_node = Node(new_node)
         new_node.prev = ref_node.prev
         new_node.next = ref_node
         ref_node.prev.next = new_node
