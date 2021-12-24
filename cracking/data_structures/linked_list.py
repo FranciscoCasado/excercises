@@ -2,8 +2,8 @@
 Implementation of linked list data structure
 """
 
-class Node:
 
+class Node:
     def __init__(self, data=None, next=None, prev=None):
         self.data = data
         self.next = next
@@ -11,7 +11,6 @@ class Node:
 
 
 class LinkedList:
-
     def __init__(self):
         self._root = Node()
         self._tail = Node()
@@ -58,7 +57,7 @@ class LinkedList:
             if n.data == content:
                 return n
             n = n.next
-        
+
         return None
 
     def remove_node(self, node):
@@ -68,12 +67,12 @@ class LinkedList:
 
     def __repr__(self):
         if self.is_empty:
-            return '[]'
-        
+            return "[]"
+
         n = self.first
-        rep = ''
+        rep = ""
         while n.next:
-            rep += str(n.data) + ','
+            rep += str(n.data) + ","
             n = n.next
-        
-        return '[' + rep[:-1] + ']'
+
+        return "[" + rep[:-1] + "]"

@@ -2,22 +2,22 @@ import unittest
 
 from linked_list import Node, LinkedList
 
-class TestNode(unittest.TestCase):
 
+class TestNode(unittest.TestCase):
     def test_empty_node(self):
         n = Node()
         self.assertIsNone(n.data)
         self.assertIsNone(n.prev)
         self.assertIsNone(n.next)
-    
+
     def test_node(self):
         n = Node(data=0, next=Node(), prev=Node())
         self.assertEqual(n.data, 0)
         self.assertIsNotNone(n.prev)
         self.assertIsNotNone(n.next)
 
+
 class TestLinkedList(unittest.TestCase):
-    
     def test_empty_list(self):
         l = LinkedList()
         self.assertIsNotNone(l._root)
@@ -26,7 +26,7 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(l._tail.prev, l._root)
         self.assertIsNone(l.first)
         self.assertIsNone(l.last)
-        self.assertEqual(repr(l), '[]')
+        self.assertEqual(repr(l), "[]")
 
     def test_list_with_one_node(self):
         l = LinkedList()
@@ -58,7 +58,7 @@ class TestLinkedList(unittest.TestCase):
         l.insert_at_begining(Node(67))
         l.insert_at_begining(Node(17))
         l.insert_at_end(Node(81))
-        self.assertEqual(repr(l), '[17,67,34,81]')
+        self.assertEqual(repr(l), "[17,67,34,81]")
 
     def test_find_node(self):
         l = LinkedList()
@@ -69,7 +69,7 @@ class TestLinkedList(unittest.TestCase):
         l.insert_at_end(Node(81))
         self.assertEqual(l.find_node(17), target)
         self.assertIsNone(l.find_node(100))
-        
+
     def test_remove_node(self):
         l = LinkedList()
         l.insert_at_begining(Node(34))
@@ -78,8 +78,8 @@ class TestLinkedList(unittest.TestCase):
         l.insert_at_end(Node(81))
         n = l.find_node(67)
         self.assertEqual(l.remove_node(n).data, 67)
-        self.assertEqual(repr(l), '[17,34,81]')
-        
+        self.assertEqual(repr(l), "[17,34,81]")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
