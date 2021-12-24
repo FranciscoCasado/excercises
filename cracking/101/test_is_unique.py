@@ -9,7 +9,7 @@ class TestIsUnique(unittest.TestCase):
 
     
     def test_non_unique_string(self):
-        self.assertFalse(is_unique('no es unica'))
+        self.assertFalse(is_unique('noesunica'))
 
 if __name__ == '__main__':
     unittest.main()
