@@ -35,5 +35,5 @@ def is_permutation_without_strcmp(str1, str2) -> bool:
 """
 Alternatives: 
 - Instead of checking even sum, the first string could increase the counter while the second string decreases it
-- First check str lengths. If equal, sum all characters from the first string, then subtract every character of the second string. If result is equal to zero, both strings are permutations :)
+- First check str lengths. If equal, sum all characters (as ints, using ord()) from the first string, then subtract every character of the second string. If result is equal to zero, both strings are permutations :)
 """
