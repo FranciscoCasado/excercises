@@ -60,7 +60,26 @@ class TestLinkedList(unittest.TestCase):
         l.insert_at_end(Node(81))
         self.assertEqual(repr(l), '[17,67,34,81]')
 
-
+    def test_find_node(self):
+        l = LinkedList()
+        target = Node(17)
+        l.insert_at_begining(Node(34))
+        l.insert_at_begining(Node(67))
+        l.insert_at_begining(target)
+        l.insert_at_end(Node(81))
+        self.assertEqual(l.find_node(17), target)
+        self.assertIsNone(l.find_node(100))
+        
+    def test_remove_node(self):
+        l = LinkedList()
+        l.insert_at_begining(Node(34))
+        l.insert_at_begining(Node(67))
+        l.insert_at_begining(Node(17))
+        l.insert_at_end(Node(81))
+        n = l.find_node(67)
+        self.assertEqual(l.remove_node(n).data, 67)
+        self.assertEqual(repr(l), '[17,34,81]')
+        
 
 if __name__ == '__main__':
     unittest.main()

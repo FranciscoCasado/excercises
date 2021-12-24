@@ -52,6 +52,20 @@ class LinkedList:
         ref_node.prev.next = new_node
         ref_node.prev = new_node
 
+    def find_node(self, content):
+        n = self.first
+        while n.next:
+            if n.data == content:
+                return n
+            n = n.next
+        
+        return None
+
+    def remove_node(self, node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+        return node
+
     def __repr__(self):
         if self.is_empty:
             return '[]'
