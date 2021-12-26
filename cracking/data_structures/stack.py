@@ -15,7 +15,7 @@ class Stack:
     def pop(self):
         if self.is_empty:
             raise EmptyStackException()
-        return self.list.remove_node(self.list.last)
+        return self.list.remove_node(self.list.last).data
 
     def peek(self):
         if self.is_empty:

@@ -26,7 +26,7 @@ class TestStack(unittest.TestCase):
         s.push(15)
         p = s.pop()
         self.assertTrue(s.is_empty)
-        self.assertEqual(p.data, 15)
+        self.assertEqual(p, 15)
 
     def test_pop_from_empty_stack(self):
         s = Stack()

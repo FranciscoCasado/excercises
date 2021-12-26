@@ -63,7 +63,7 @@ class Graph:
         routes[origin] = [origin]  # the route to first node is itself
 
         while not s.is_empty:
-            current_node = s.pop().data
+            current_node = s.pop()
             
             for child in current_node.children:
                 if child.name not in routes:
