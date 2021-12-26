@@ -51,12 +51,11 @@ class TestGraph(unittest.TestCase):
         nodes["b"].add_children([nodes["d"]])
         g = Graph()
         g.add_nodes(nodes.values())
-        self.assertEqual(["a","b"], g.find_route_between_two_nodes("a", "b"))
-        self.assertEqual(["a","c"], g.find_route_between_two_nodes("a", "c"))
-        self.assertEqual(["a","b","d"], g.find_route_between_two_nodes("a", "d"))
+        self.assertEqual(["a", "b"], g.find_route_between_two_nodes("a", "b"))
+        self.assertEqual(["a", "c"], g.find_route_between_two_nodes("a", "c"))
+        self.assertEqual(["a", "b", "d"], g.find_route_between_two_nodes("a", "d"))
         self.assertIsNone(g.find_route_between_two_nodes("a", "e"))
         self.assertIsNone(g.find_route_between_two_nodes("a", "g"))
-
 
 
 if __name__ == "__main__":
