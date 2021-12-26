@@ -11,7 +11,7 @@ class Queue:
 
     def add(self, data):
         self.list.insert_at_begining(data)
-    
+
     def remove(self):
         if self.is_empty:
             raise EmptyQueueException()
@@ -20,8 +20,6 @@ class Queue:
     def __repr__(self):
         return repr(self.list)
 
+
 class EmptyQueueException(Exception):
     pass
-
-
-    

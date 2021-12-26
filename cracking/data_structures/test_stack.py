@@ -46,9 +46,9 @@ class TestStack(unittest.TestCase):
         s.push(47)
         s.push(35)
         s.push(57)
-        self.assertEqual(repr(s), '[47,35,57]')
+        self.assertEqual(repr(s), "[47,35,57]")
         s.pop()
-        self.assertEqual(repr(s), '[47,35]')
+        self.assertEqual(repr(s), "[47,35]")
 
 
 if __name__ == "__main__":

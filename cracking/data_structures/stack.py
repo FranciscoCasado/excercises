@@ -1,5 +1,6 @@
 from linked_list import LinkedList, Node
 
+
 class Stack:
     def __init__(self):
         self.list = LinkedList()
@@ -10,7 +11,7 @@ class Stack:
 
     def push(self, data):
         self.list.insert_at_end(data)
-    
+
     def pop(self):
         if self.is_empty:
             raise EmptyStackException()
@@ -23,6 +24,7 @@ class Stack:
 
     def __repr__(self):
         return repr(self.list)
+
 
 class EmptyStackException(Exception):
     pass

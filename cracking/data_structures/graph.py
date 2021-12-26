@@ -1,30 +1,33 @@
 from enum import Enum
 
+
 class Node:
     def __init__(self, name, node_list=[]):
         self.name = name
         self._children = dict()
         self.add_nodes(node_list)
-    
+
     @property
     def children(self):
         return list(self._children.values())
-    
+
     def add_nodes(self, node_list):
         for node in node_list:
             if node.name not in self._children:
                 self._children[node.name] = node
-        
-    def __repr__(self):
-        children_list = ''
-        for child in self._children.values():
-            children_list += str(child.name) + ','
 
-        return str(self.name) + '->[' + children_list[:-1] + ']'
+    def __repr__(self):
+        children_list = ""
+        for child in self._children.values():
+            children_list += str(child.name) + ","
+
+        return str(self.name) + "->[" + children_list[:-1] + "]"
+
 
 class SearchType(Enum):
     DFS = 1
     BFS = 2
+
 
 class Graph:
     def __init__(self, node_list=[]):
@@ -42,6 +45,6 @@ class Graph:
 
     def search_depth_first(self, data) -> Node:
         return Node()
-    
+
     def search_breadth_first(self, data) -> Node:
         return Node()
