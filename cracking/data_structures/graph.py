@@ -1,17 +1,18 @@
 from enum import Enum
+from stack import Stack
 
 
 class Node:
     def __init__(self, name, node_list=[]):
         self.name = name
-        self._children = dict()
-        self.add_nodes(node_list)
+        self._children = dict()  # dict implementation ensures node uniqueness :)
+        self.add_children(node_list)
 
     @property
     def children(self):
         return list(self._children.values())
 
-    def add_nodes(self, node_list):
+    def add_children(self, node_list):
         for node in node_list:
             if node.name not in self._children:
                 self._children[node.name] = node
@@ -31,20 +32,52 @@ class SearchType(Enum):
 
 class Graph:
     def __init__(self, node_list=[]):
-        self._nodes = node_list
+        self._nodes = dict()  # dict implementation ensures node uniqueness :)
+        self.add_nodes(node_list)
 
-    def find_node(search_type, data):
-        if search_type == SearchType.DFS:
-            return self.search_depth_first(data)
-        if search_type == SearchType.BFS:
-            return self.search_breadth_first(data)
+    @property
+    def nodes(self):
+        return list(self._nodes.values())
 
-    def add_node(parent_node, new_node):
-        self._nodes.append(new_node)
-        parent_node.add_node(new_node)
+    def add_nodes(self, node_list, parent_node=None):
+        if parent_node:
+            self._nodes[parent_node].add_children(node_list)
 
-    def search_depth_first(self, data) -> Node:
-        return Node()
+        for node in node_list:
+            if node.name not in self._nodes:
+                self._nodes[node.name] = node
+                self.add_nodes(node.children)
 
-    def search_breadth_first(self, data) -> Node:
-        return Node()
+    def find_node(self, name):
+        if name in self._nodes:
+            return self._nodes[name]
+
+        return False
+
+    def find_route_between_two_nodes(self, origin, destination):
+        if origin not in self._nodes or destination not in self._nodes:
+            return None
+        s = Stack()
+        s.push(self.find_node(origin))
+        routes = dict()
+        routes[origin] = [origin]  # the route to first node is itself
+
+        while not s.is_empty:
+            current_node = s.pop().data
+            
+            for child in current_node.children:
+                if child.name not in routes:
+                    route = routes[current_node.name].copy()
+                    route.append(child.name)
+                    routes[child.name] = route
+                    s.push(child)
+                
+                if child.name == destination: 
+                    return routes[child.name]
+
+        return None
+
+
+
+
+        
