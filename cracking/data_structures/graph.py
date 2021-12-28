@@ -1,4 +1,6 @@
 from enum import Enum
+
+from queue import Queue
 from stack import Stack
 
 
@@ -57,20 +59,20 @@ class Graph:
     def find_route_between_two_nodes(self, origin, destination):
         if origin not in self._nodes or destination not in self._nodes:
             return None
-        s = Stack()
-        s.push(self.find_node(origin))
+        q = Queue()
+        q.add(self.find_node(origin))
         routes = dict()
         routes[origin] = [origin]  # the route to first node is itself
 
-        while not s.is_empty:
-            current_node = s.pop()
+        while not q.is_empty:
+            current_node = q.remove()
 
             for child in current_node.children:
                 if child.name not in routes:
                     route = routes[current_node.name].copy()
                     route.append(child.name)
                     routes[child.name] = route
-                    s.push(child)
+                    q.add(child)
 
                 if child.name == destination:
                     return routes[child.name]

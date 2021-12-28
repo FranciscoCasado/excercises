@@ -15,7 +15,7 @@ class Queue:
     def remove(self):
         if self.is_empty:
             raise EmptyQueueException()
-        return self.list.remove_node(self.list.last)
+        return self.list.remove_node(self.list.last).data
 
     def __repr__(self):
         return repr(self.list)

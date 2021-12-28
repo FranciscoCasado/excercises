@@ -20,7 +20,7 @@ class TestQueue(unittest.TestCase):
         q.add(13)
         r = q.remove()
         self.assertTrue(q.is_empty)
-        self.assertEqual(r.data, 13)
+        self.assertEqual(r, 13)
 
     def test_add_three_items_then_remove_one(self):
         q = Queue()
