@@ -1,7 +1,7 @@
 from enum import Enum
 
-from queue import Queue
-from stack import Stack
+from cracking.data_structures.queue import Queue
+from cracking.data_structures.stack import Stack
 
 
 class Node:

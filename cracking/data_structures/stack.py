@@ -1,4 +1,4 @@
-from linked_list import LinkedList, Node
+from cracking.data_structures.linked_list import LinkedList, Node
 
 
 class Stack:
