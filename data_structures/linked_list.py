@@ -1,5 +1,5 @@
 """
-Implementation of linked list data structure
+Implementation of doubly-linked list data structure
 """
 
 
