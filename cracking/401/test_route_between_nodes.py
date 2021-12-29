@@ -1,6 +1,7 @@
 import unittest
 
-from cracking.data_structures.graph import Graph, Node
+from data_structures.graph import Graph, Node
+
 from route_between_nodes import find_route_between_nodes
 
 class TestFindRouteBetweenNodes(unittest.TestCase):
