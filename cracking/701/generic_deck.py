@@ -30,8 +30,10 @@ class Deck:
         shuffle(self._cards)
 
 class DeckBuilder:
+    def __init__(self):
+        pass
     
-    def create_deck(values):
+    def create_deck(self,values):
         your_brand_new_fancy_deck = Deck()
         for value in values:
             your_brand_new_fancy_deck.add_card(Card(value))
