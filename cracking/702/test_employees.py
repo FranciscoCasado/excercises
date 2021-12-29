@@ -1,17 +1,18 @@
 import unittest
 
 from call import CallSeverity
-from employee import Employee, EmployeeRole, Director, Manager, Respondent
+from employee import Employee, EmployeeRole, EmployeeFactory
 
 class TestEmployee(unittest.TestCase):
-    def test_create_employee(self):       
-        director = Director()
+    def test_create_employee(self):
+        factory = EmployeeFactory()
+        director = factory.create_employee("director")
         self.assertEqual(director.role, EmployeeRole.DIRECTOR)
 
-        manager = Manager()
+        manager = factory.create_employee("manager")
         self.assertEqual(manager.role, EmployeeRole.MANAGER)
 
-        respondent = Respondent()
+        respondent = factory.create_employee("respondent")
         self.assertEqual(respondent.role, EmployeeRole.RESPONDENT)
 
 

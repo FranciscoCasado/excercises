@@ -1,10 +1,10 @@
-from abc import ABC
+from abc import ABC, abstractmethod, abstractproperty
 from ordered_enum import OrderedEnum
 
 from call import Call
 
 class Employee(ABC):
-    def __init__(self, role):
+    def __init__(self, role=None):
         self._role = role
         self._busy = False
 
@@ -29,7 +29,6 @@ class EmployeeRole(OrderedEnum):
     MANAGER = 1
     RESPONDENT = 0
 
-
 class Director(Employee):
     def __init__(self):
         Employee.__init__(self, role=EmployeeRole.DIRECTOR)
@@ -42,3 +41,15 @@ class Manager(Employee):
 class Respondent(Employee):
     def __init__(self):
         Employee.__init__(self, role=EmployeeRole.RESPONDENT)
+
+
+class EmployeeFactory:
+
+    PRODUCT = {
+        "director": Director,
+        "manager": Manager,
+        "respondent": Respondent,
+    }
+
+    def create_employee(self, role) -> Employee:
+        return self.PRODUCT[role]()
