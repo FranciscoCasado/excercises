@@ -1,16 +1,35 @@
-from employee import Director, Manager, Respondent
-from call import Call
+from employee import EmployeeFactory
+from call import Call, CallSeverity
 
 class CallCenter:
-    def __init__(self, personel):
+    def __init__(self, personel, severity_list):
+        self._role_hierarchy = severity_list
 
-        self._director_queue = [Director() for e in range(personel['director'])]
-        self._manager_queue = [Manager() for e in range(personel['manager'])]
-        self._respondent_queue = [Respondent() for e in range(personel['respondent'])]
-        self._busy_people = []
+        factory = EmployeeFactory()
+        self._available = { role: [factory.create_employee(role) for i in range(personel[role])]
+                                    for role in personel}
+                
+        self._busy = []
 
-    def handle_call(self, call):
-        pass
+    def assign_call(self, call):
+        role = self.who_is_available()
+        if not role:
+            print("All of our agents are busy, please hold the line or try again later")
+
+        employee = self._available[role][-1]
+        if employee.handle_call(call):
+            print(f"assigning call to {role}")
+            self._busy.append(self._available[role].pop())
+        
+
+    def who_is_available(self):
+        for role in self._role_hierarchy:
+            if self._available[role]:
+                return role
+        
+        return None
+
+            
 
         
 

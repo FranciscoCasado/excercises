@@ -29,6 +29,8 @@ class EmployeeRole(OrderedEnum):
     MANAGER = 1
     RESPONDENT = 0
 
+    
+
 class Director(Employee):
     def __init__(self):
         Employee.__init__(self, role=EmployeeRole.DIRECTOR)
@@ -52,4 +54,9 @@ class EmployeeFactory:
     }
 
     def create_employee(self, role) -> Employee:
-        return self.PRODUCT[role]()
+        if role in self.PRODUCT:
+            return self.PRODUCT[role]()
+        raise FactoryProductError(f"There is no '{role}' role in our inventory")
+
+class FactoryProductError(Exception):
+    pass
