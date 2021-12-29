@@ -6,13 +6,12 @@ from callcenter import CallCenter, Call, CallSeverity
 class TestCallCenter(unittest.TestCase):
     def test_create_call_center(self):
         personel = {
-            "director": 2,
+            "respondent": 20,
             "manager": 5,
-            "respondent": 20
+            "director": 2
         }
-        severity_list = ["respondent", "manager", "director"]
 
-        call_center = CallCenter(personel, severity_list)
+        call_center = CallCenter(personel)
 
         self.assertEqual(len(call_center._available["director"]), 2)
         self.assertEqual(len(call_center._available["manager"]), 5)
@@ -23,16 +22,52 @@ class TestCallCenter(unittest.TestCase):
         call = Call(CallSeverity.RESPONDENT)
 
         personel = {
-            "director": 1,
+            "respondent": 1,
             "manager": 1,
-            "respondent": 1
+            "director": 1
         }
-        severity_list = ["respondent", "manager", "director"]
         
-        call_center = CallCenter(personel, severity_list)
+        call_center = CallCenter(personel)
         
         call_center.assign_call(call)
         self.assertEqual(len(call_center._available["respondent"]), 0)
+        self.assertEqual(len(call_center._available["manager"]), 1)
+        self.assertEqual(len(call_center._available["director"]), 1)
+        self.assertEqual(len(call_center._busy), 1)
+
+    
+    def test_assign_call_to_manager(self):
+        call = Call(CallSeverity.MANAGER)
+
+        personel = {
+            "respondent": 1,
+            "manager": 1,
+            "director": 1
+        }
+        
+        call_center = CallCenter(personel)
+        
+        call_center.assign_call(call)
+        self.assertEqual(len(call_center._available["respondent"]), 1)
+        self.assertEqual(len(call_center._available["manager"]), 0)
+        self.assertEqual(len(call_center._available["director"]), 1)
+        self.assertEqual(len(call_center._busy), 1)
+
+    def test_assign_call_to_director(self):
+        call = Call(CallSeverity.DIRECTOR)
+
+        personel = {
+            "respondent": 1,
+            "manager": 1,
+            "director": 1
+        }
+        
+        call_center = CallCenter(personel)
+        
+        call_center.assign_call(call)
+        self.assertEqual(len(call_center._available["respondent"]), 1)
+        self.assertEqual(len(call_center._available["manager"]), 1)
+        self.assertEqual(len(call_center._available["director"]), 0)
         self.assertEqual(len(call_center._busy), 1)
 
 
