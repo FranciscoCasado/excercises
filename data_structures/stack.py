@@ -1,9 +1,9 @@
-from data_structures.linked_list import LinkedList, Node
+from data_structures.linked_list.doubly import DoublyLinkedList, Node
 
 
 class Stack:
     def __init__(self):
-        self.list = LinkedList()
+        self.list = DoublyLinkedList()
 
     @property
     def is_empty(self):

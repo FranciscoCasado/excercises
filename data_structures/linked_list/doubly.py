@@ -10,7 +10,7 @@ class Node:
         self.prev = prev
 
 
-class LinkedList:
+class DoublyLinkedList:
     def __init__(self):
         self._root = Node()
         self._tail = Node()
