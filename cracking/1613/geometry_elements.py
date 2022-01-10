@@ -18,6 +18,12 @@ class Point(tuple):
 
         return Point(self.x + other.x, self.y + other.y)
 
+    def __mul__(self, other):
+        if not isinstance(other, self.__class__):
+            raise TypeError(f"'{other}' is of type {other.__class__}, it cannot be added to a Point")
+
+        return self.x * other.x + self.y * other.y
+
 class Square:
     def __init__(self, origin: Point, side):
         self.origin = origin
@@ -44,8 +50,9 @@ class Line:
 
         return (self._m == other._m) and (self._n == other._n)
 
+class Segment(Line):
+    pass
     
-
-class Bisector:
-    def bisect_squares(self, first: Square, second: Square) -> Point:
-        return Line(first.center, second.center)
+    def __eq__(self, other):
+        return ( (self.start == other.start and self.end == other.end) or
+                (self.start == other.end and self.end == other.start) )

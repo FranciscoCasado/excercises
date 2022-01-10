@@ -1,6 +1,6 @@
 import unittest
 
-from bisect_squares import Square, Line, Point, Bisector
+from geometry_elements import Square, Line, Point, Segment
 
 class TestPoint(unittest.TestCase):
     def test_create_point(self):
@@ -14,7 +14,7 @@ class TestPoint(unittest.TestCase):
         q = Point(4,6)
         self.assertEqual(p+q, (14,11))
 
-class TestSquares(unittest.TestCase):
+class TestSquare(unittest.TestCase):
     def test_create_squares(self):
         s = Square(Point(0, 0), 10)
         self.assertEqual(s.center, (5, 5))
@@ -22,21 +22,19 @@ class TestSquares(unittest.TestCase):
         s = Square(Point(10, 10), -20)
         self.assertEqual(s.center, (0, 0))
 
-class TestSquares(unittest.TestCase):
+class TestLine(unittest.TestCase):
     def test_create_line(self):
         l = Line(Point(0, 0), Point(1, 1))
         self.assertEqual(l._m, 1)
         self.assertEqual(l._n, 0)
 
-class TestBisector(unittest.TestCase):
-    def test_bisect_squares(self):
-        s1 = Square(Point(0,0), 10)
-        s2 = Square(Point(0,5), 10)
-        b = Bisector()
-        l = b.bisect_squares(s1, s2)
-        self.assertEqual(l, Line(Point(5,5), Point(5,10)))
-        self.assertEqual(l.start, Point(5,5))
-        self.assertEqual(l.end,  Point(5,10))
+
+class TestSegment(unittest.TestCase):
+    def test_create_segment(self):
+        s1 = Segment(Point(0, 0), Point(1, 1))
+        s2 = Segment(Point(1, 1), Point(0, 0))
+        self.assertEqual(s1, s2)
+        self.assertEqual(s2, s1)
 
 
 if __name__ == "__main__":
