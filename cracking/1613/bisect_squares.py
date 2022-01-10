@@ -29,7 +29,13 @@ class Square:
 
 class Line:
     def __init__(self, start: Point, end: Point):
-        self._m = (end.y - start.y) / (end.x - start.x)
+        self.start = start
+        self.end = end
+        
+        if start.x == end.x:
+            self._m = float("Inf")
+        else:
+            self._m = (end.y - start.y) / (end.x - start.x)
         self._n = start.y - start.x * self._m
 
     def __eq__(self, other):
