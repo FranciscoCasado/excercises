@@ -2,17 +2,26 @@ import unittest
 
 from geometry_elements import Square, Line, Point, Segment
 
+
 class TestPoint(unittest.TestCase):
     def test_create_point(self):
-        p = Point(38,44)
-        self.assertEqual(p, (38,44))
+        p = Point(38, 44)
+        self.assertEqual(p, (38, 44))
         self.assertEqual(p.x, 38)
         self.assertEqual(p.y, 44)
-    
+
     def test_add_two_points(self):
-        p = Point(10,5)
-        q = Point(4,6)
-        self.assertEqual(p+q, (14,11))
+        p = Point(10, 5)
+        q = Point(4, 6)
+        self.assertEqual(p + q, (14, 11))
+
+    def test_dot_product_two_points(self):
+        p = Point(10, 5)
+        q = Point(4, 6)
+        r = Point(-1, 0)
+        self.assertEqual(p * q, 70)
+        self.assertEqual(p * r, -10)
+
 
 class TestSquare(unittest.TestCase):
     def test_create_squares(self):
@@ -21,6 +30,7 @@ class TestSquare(unittest.TestCase):
 
         s = Square(Point(10, 10), -20)
         self.assertEqual(s.center, (0, 0))
+
 
 class TestLine(unittest.TestCase):
     def test_create_line(self):

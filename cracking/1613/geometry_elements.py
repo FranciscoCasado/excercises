@@ -1,28 +1,31 @@
-
-
 class Point(tuple):
     def __new__(cls, x, y):
-        return super(Point, cls).__new__(cls, (float(x),float(y)))
-    
+        return super(Point, cls).__new__(cls, (float(x), float(y)))
+
     @property
     def x(self):
         return self[0]
-    
+
     @property
     def y(self):
         return self[1]
 
     def __add__(self, other):
         if not isinstance(other, self.__class__):
-            raise TypeError(f"'{other}' is of type {other.__class__}, it cannot be added to a Point")
+            raise TypeError(
+                f"'{other}' is of type {other.__class__}, it cannot be added to a Point"
+            )
 
         return Point(self.x + other.x, self.y + other.y)
 
     def __mul__(self, other):
         if not isinstance(other, self.__class__):
-            raise TypeError(f"'{other}' is of type {other.__class__}, it cannot be added to a Point")
+            raise TypeError(
+                f"'{other}' is of type {other.__class__}, it cannot be added to a Point"
+            )
 
         return self.x * other.x + self.y * other.y
+
 
 class Square:
     def __init__(self, origin: Point, side):
@@ -31,13 +34,14 @@ class Square:
 
     @property
     def center(self):
-        return Point(self.origin.x + self._a/2, self.origin.y + self._a/2)
+        return Point(self.origin.x + self._a / 2, self.origin.y + self._a / 2)
+
 
 class Line:
     def __init__(self, start: Point, end: Point):
         self.start = start
         self.end = end
-        
+
         if start.x == end.x:
             self._m = float("Inf")
         else:
@@ -46,13 +50,17 @@ class Line:
 
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
-            raise TypeError(f"'{other}' is of type {other.__class__}, it cannot be compared to a Line")
+            raise TypeError(
+                f"'{other}' is of type {other.__class__}, it cannot be compared to a Line"
+            )
 
         return (self._m == other._m) and (self._n == other._n)
 
+
 class Segment(Line):
     pass
-    
+
     def __eq__(self, other):
-        return ( (self.start == other.start and self.end == other.end) or
-                (self.start == other.end and self.end == other.start) )
+        p = self.start == other.start and self.end == other.end
+        q = self.start == other.end and self.end == other.start
+        return p or q
