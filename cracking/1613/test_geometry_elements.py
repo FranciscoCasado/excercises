@@ -2,7 +2,6 @@ import unittest
 
 from geometry_elements import Square, Line, Point, Segment
 
-
 class TestPoint(unittest.TestCase):
     def test_create_point(self):
         p = Point(38, 44)
