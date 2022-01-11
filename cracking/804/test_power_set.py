@@ -14,9 +14,11 @@ class TestPowerSet(unittest.TestCase):
         self.assertEqual(power_set(s), [[], ['a']])
 
 
-    def test_singleton(self):
+    def test_two_items(self):
         s = ['a', 'b']
         self.assertEqual(power_set(s), [[], ['a'], ['b'], ['a','b']])
+
+
 
 if __name__ == "__main__":
     unittest.main()
