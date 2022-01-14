@@ -34,10 +34,6 @@ jobs:
       - python/install-packages:
           pip-dependency-file: requirements.txt
           pkg-manager: pip
-      - python/install-packages:
-          args: install -e .
-          pkg-manager: pip
-          pypi-cache: false
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
