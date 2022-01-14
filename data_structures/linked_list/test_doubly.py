@@ -1,6 +1,6 @@
 import unittest
 
-from doubly import Node, DoublyLinkedList
+from data_structures.linked_list.doubly import Node, DoublyLinkedList
 
 
 class TestNode(unittest.TestCase):
