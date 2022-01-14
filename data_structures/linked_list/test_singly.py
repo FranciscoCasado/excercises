@@ -1,6 +1,6 @@
 import unittest
 
-from singly import Node, SinglyLinkedList
+from data_structures.linked_list.singly import Node, SinglyLinkedList
 
 
 class TestNode(unittest.TestCase):
