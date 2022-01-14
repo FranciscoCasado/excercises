@@ -1,6 +1,6 @@
 import unittest
 
-from linked_list import Node, LinkedList
+from doubly import Node, DoublyLinkedList
 
 
 class TestNode(unittest.TestCase):
@@ -17,9 +17,9 @@ class TestNode(unittest.TestCase):
         self.assertIsNotNone(n.next)
 
 
-class TestLinkedList(unittest.TestCase):
+class TestDoublyLinkedList(unittest.TestCase):
     def test_empty_list(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         self.assertIsNotNone(l._root)
         self.assertIsNotNone(l._tail)
         self.assertEqual(l._root.next, l._tail)
@@ -29,13 +29,13 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(repr(l), "[]")
 
     def test_list_with_one_node(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         l.insert_at_begining(Node(56))
         self.assertEqual(l.first.data, 56)
         self.assertEqual(l.first, l.last)
 
     def test_insert_node_next(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         l.insert_at_begining(Node(33))
         l.insert_node_next(l.first, Node(56))
         self.assertEqual(l.first.data, 33)
@@ -44,7 +44,7 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(l.last.prev.data, 33)
 
     def test_insert_node_prev(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         l.insert_at_begining(Node(33))
         l.insert_node_prev(l.first, Node(56))
         self.assertEqual(l.first.data, 56)
@@ -53,7 +53,7 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(l.last.prev.data, 56)
 
     def test_linked_list_repr(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         l.insert_at_begining(Node(34))
         l.insert_at_begining(Node(67))
         l.insert_at_begining(Node(17))
@@ -61,7 +61,7 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(repr(l), "[17,67,34,81]")
 
     def test_find_node(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         target = Node(17)
         l.insert_at_begining(Node(34))
         l.insert_at_begining(Node(67))
@@ -71,7 +71,7 @@ class TestLinkedList(unittest.TestCase):
         self.assertIsNone(l.find_node(100))
 
     def test_remove_node(self):
-        l = LinkedList()
+        l = DoublyLinkedList()
         l.insert_at_begining(Node(34))
         l.insert_at_begining(Node(67))
         l.insert_at_begining(Node(17))

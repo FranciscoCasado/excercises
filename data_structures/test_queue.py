@@ -1,6 +1,6 @@
 import unittest
 
-from queue import Queue, EmptyQueueException
+from data_structures.queue import Queue, EmptyQueueException
 
 
 class TestQueue(unittest.TestCase):

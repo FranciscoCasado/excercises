@@ -1,6 +1,6 @@
 import unittest
 
-from graph import Node, Graph
+from data_structures.graph import Node, Graph
 
 
 class TestNode(unittest.TestCase):
