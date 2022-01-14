@@ -22,6 +22,8 @@ jobs:
     # Change the version below to your required version of python
     docker:
       - image: cimg/python:3.7
+    environment:
+      PYTHONPATH: /home/circleci/project/src
     # Checkout the code as the first step. This is a dedicated CircleCI step.
     # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
     # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
@@ -30,16 +32,10 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          pkg-manager: pip
-      - python/install-packages:
           pip-dependency-file: requirements.txt
           pkg-manager: pip
       - python/install-packages:
           args: install -e .
-          pkg-manager: pip
-          pypi-cache: false
-      - python/install-packages:
-          args: pytest
           pkg-manager: pip
           pypi-cache: false
       - run:
