@@ -13,17 +13,23 @@ class TestCircusTower(unittest.TestCase):
         self.assertEqual(largest_tower(people).height, 2)
 
     def test_many_people_1(self):
-        people = [(100,60), (110, 55), (120, 70), (105, 65), (118, 70), (115, 75), (130, 80) ]
+        people = [
+            (100, 60),
+            (110, 55),
+            (120, 70),
+            (105, 65),
+            (118, 70),
+            (115, 75),
+            (130, 80),
+        ]
         self.assertEqual(largest_tower(people).height, 5)
 
     def test_many_people_2(self):
-        people = [
-            (65, 100), (70, 150), (56,90), (75, 190), (60, 95), (68, 110)
-                ]
+        people = [(65, 100), (70, 150), (56, 90), (75, 190), (60, 95), (68, 110)]
         self.assertEqual(largest_tower(people).height, 6)
 
     def test_many_people_3(self):
-        people = [(50, 100), (60, 110), (70, 120), (80, 130)] 
+        people = [(50, 100), (60, 110), (70, 120), (80, 130)]
         self.assertEqual(largest_tower(people).height, 4)
 
     def test_many_people_4(self):
