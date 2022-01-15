@@ -14,16 +14,15 @@ def bit(a: int, index: int) -> bool:
     return (a >> index) & 1
 
 def bit_sum(a: int, b: int, c: int) -> bool:
-    return xor(xor(a, b), c)
+    return a ^ b ^ c
 
 def carry(a: int, b: int, c: int) -> bool:
-    return xor(
-            xor( a & b & c,
-                a & b & (not c) ),
-            xor( 
-                (not a) & b & c,
-                a & (not b) & c ),
-        )
+    return ( 
+        (a & b & c) ^ 
+        (a & b & (not c)) ^ 
+        ( (not a) & b & c) ^ 
+        (a & (not b) & c )
+    )
 
 def set_bit(a: int, value: int, index: int) -> int:
     if value < 0 or value > 1:
